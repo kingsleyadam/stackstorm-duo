@@ -1,31 +1,32 @@
 # Duo Integration Pack
 
-This pack intergrates with Duo (was Duo Secuirty), to allow 2FA to be
-carried out within flows (everything expect sms is supported, but
+This pack integrates with Duo (was Duo Security), to allow 2FA to be
+carried out within flows (everything except SMS is supported, but
 defaults to auto).
 
 ## Auth Configuration 
 
-You need an application intergration configured in the Duo interface
-and the ikey, skey and host recorded in the `config.yaml`
+Copy the example configuration in [duo.yaml.example](./duo.yaml.example)
+to `/opt/stackstorm/configs/duo.yaml` and edit as required.
+
+You need an application integration configured in the Duo interface.
+Configure the ikey, skey and host in `duo.yaml`
 
 ```yaml
-auth:
-  host: api-hostname
-  ikey: auth-api-integration-key
-  skey: auth-api-secret-key
+auth_host: api-hostname
+auth_ikey: auth-api-integration-key
+auth_skey: auth-api-secret-key
 ```
 
 ## Admin Configuration
 
-To support feature actions, it's possible to configure an admin API
+To support feature actions, you can configure an admin API
 key, however this is not currently used.
 
 ```yaml
-admin:
-  host: api-hostname
-  ikey: admin-api-integration-key
-  skey: admin-api-secret-key
+admin_host: api-hostname
+admin_ikey: admin-api-integration-key
+admin_skey: admin-api-secret-key
 ```
 
 ## Actions
@@ -46,5 +47,5 @@ Carries out an authentication against Duo for the user (defaults to
 It's possible to use passcode if you collect the passcode from the
 user in a secure manner.
 
-Altho `sms` is a valid factor it's not included as it automaticly
+Although `SMS` is a valid factor it's not included as it automatically
 denies the authentication and the user needs to be re-authed.
