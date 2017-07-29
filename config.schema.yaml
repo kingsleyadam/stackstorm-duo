@@ -18,14 +18,14 @@ auth_skey:
 admin_host:
   description: "The Duo API Server hostname."
   type: "string"
-  required: true
+  required: false
 admin_ikey:
   description: "The Duo Admin api-integration-key"
   type: "string"
   secret: true
-  required: true
+  required: false
 admin_skey:
   description: "The Duo Admin secret key"
   type: "string"
   secret: true
-  required: true
+  required: false
