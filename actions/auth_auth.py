@@ -61,7 +61,7 @@ class AuthAuthAction(AuthBaseAction):
             data = self.duo_auth.auth(factor=factor,
                                       username=username,
                                       **auth_kargs)
-        except RuntimeError, e:
+        except RuntimeError as e:
             raise RuntimeError("Error: %s" % e)
         else:
             if data['result'] == "allow":

@@ -31,7 +31,7 @@ class AuthCheckAction(AuthBaseAction):
 
         try:
             data = self.duo_auth.check()
-        except RuntimeError, e:
+        except RuntimeError as e:
             self.send_user_error(e)
             raise RuntimeError("Check failed! '%s'" % e)
         else:

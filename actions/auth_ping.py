@@ -31,7 +31,7 @@ class AuthPingAction(AuthBaseAction):
 
         try:
             data = self.duo_auth.ping()
-        except RuntimeError, e:
+        except RuntimeError as e:
             self.send_user_error("Ping failed! %s" % e)
             raise ValueError("Ping failed! %s" % e)
         else:
