@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import urllib
+from six.moves.urllib.parse import urlencode
 
 from lib.actions import AuthBaseAction
 
@@ -43,7 +43,7 @@ class AuthAuthAction(AuthBaseAction):
                 auth_kargs['ipaddr'] = ipaddr
 
             if pushinfo is not None:
-                encoded = urllib.urlencode(pushinfo)
+                encoded = urlencode(pushinfo)
                 auth_kargs['pushinfo'] = encoded
         elif factor == "passcode":
             auth_kargs['passcode'] = passcode
