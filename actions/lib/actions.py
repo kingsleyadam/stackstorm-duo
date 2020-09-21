@@ -22,9 +22,9 @@ class AuthBaseAction(Action):
         super(AuthBaseAction, self).__init__(config)
 
         try:
-            _host = self.config.get['auth_host']
-            _ikey = self.config.get['auth_ikey']
-            _skey = self.config.get['auth_skey']
+            _host = self.config['auth_host']
+            _ikey = self.config['auth_ikey']
+            _skey = self.config['auth_skey']
         except KeyError:
             raise ValueError("Duo config not found in config.")
 
@@ -43,9 +43,9 @@ class AdminBaseAction(Action):
         super(AdminBaseAction, self).__init__(config)
 
         try:
-            _admin_host = self.config.get['admin_host']
-            _admin_ikey = self.config.get['admin_ikey']
-            _admin_skey = self.config.get['admin_skey']
+            _admin_host = self.config['admin_host']
+            _admin_ikey = self.config['admin_ikey']
+            _admin_skey = self.config['admin_skey']
         except KeyError:
             raise ValueError("Duo admin config not found in config")
 
