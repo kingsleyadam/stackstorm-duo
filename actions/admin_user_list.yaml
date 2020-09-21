@@ -1,0 +1,15 @@
+---
+name: "admin_user_list"
+pack: "duo"
+runner_type: "python-script"
+description: "Get the list of Duo users."
+enabled: true
+entry_point: 'admin_user_list.py'
+
+parameters:
+  emails:
+    type: "array"
+    description: "List of emails to filter user list on."
+  username_alias:
+    type: "string"
+    description: "Username or Alias to filter the user list on."

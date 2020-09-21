@@ -22,15 +22,35 @@ class AuthBaseAction(Action):
         super(AuthBaseAction, self).__init__(config)
 
         try:
-            self.ikey = self.config['auth_ikey']
-            self.skey = self.config['auth_skey']
-            self.host = self.config['auth_host']
+            _host = self.config.get['auth_host']
+            _ikey = self.config.get['auth_ikey']
+            _skey = self.config.get['auth_skey']
         except KeyError:
             raise ValueError("Duo config not found in config.")
 
-        self.duo_auth = duo_client.Auth(ikey=self.ikey,
-                                        skey=self.skey,
-                                        host=self.host)
+        self.duo_auth = duo_client.Auth(
+            ikey=_ikey,
+            skey=_skey,
+            host=_host
+        )
 
     def send_user_error(self, message):
         print(message)
+
+
+class AdminBaseAction(Action):
+    def __init__(self, config):
+        super(AdminBaseAction, self).__init__(config)
+
+        try:
+            _admin_host = self.config.get['admin_host']
+            _admin_ikey = self.config.get['admin_ikey']
+            _admin_skey = self.config.get['admin_skey']
+        except KeyError:
+            raise ValueError("Duo admin config not found in config")
+
+        self.duo_admin = duo_client.Admin(
+            host=_admin_host,
+            ikey=_admin_ikey,
+            skey=_admin_skey
+        )
